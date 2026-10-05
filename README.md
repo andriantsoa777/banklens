@@ -8,10 +8,10 @@ Projet de bout en bout : **ingestion de données publiques réelles → nettoyag
 
 | Fichier | Contenu |
 |---|---|
-| `dashboard/architecture.html` | **Page à montrer en entretien** : schéma d'architecture, modèle en étoile, qualité, décisions, correspondance cloud, pitch, questions probables |
+| `dashboard/architecture.html` | **Présentation du projet** : schéma d'architecture, modèle en étoile, qualité, décisions, correspondance cloud, résultats et méthode |
 | `dashboard/index.html` | Tableau de bord (5 vues : Banque, Risque de prêt, Fraude carte, Scoring & marketing, Qualité & lineage) |
 | `reports/ANSWERS.md` | Les 28 questions métier : question, réponse chiffrée, lecture, décision, limites |
-| `docs/INTERVIEW_GUIDE.md` | Pitch, chiffres à connaître, réponses aux questions d'entretien |
+| `docs/PROJECT_NOTE.md` | Synthèse, indicateurs de référence, points techniques et limites |
 | `docs/DATA_DICTIONARY.md` | Dictionnaire des 16 tables gold (grain, clés, types) |
 
 ## Architecture
