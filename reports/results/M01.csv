@@ -1,0 +1,23 @@
+dimension,modalite,contacts,souscriptions,taux_conversion_pct
+Campagne précédente,success,101,66,65.3
+Campagne précédente,failure,331,49,14.8
+Campagne précédente,nonexistent,2567,216,8.4
+Canal,cellular,1935,271,14.0
+Canal,telephone,1064,60,5.6
+Global,tous contacts,2999,331,11.0
+Métier,retired,118,27,22.9
+Métier,student,58,12,20.7
+Métier,unemployed,85,14,16.5
+Métier,admin.,743,98,13.2
+Métier,technician,496,61,12.3
+Métier,services,294,26,8.8
+Métier,housemaid,70,6,8.6
+Métier,management,233,19,8.2
+Métier,blue-collar,644,50,7.8
+Métier,entrepreneur,112,8,7.1
+Métier,self-employed,114,7,6.1
+Tranche d'âge,60+,72,25,34.7
+Tranche d'âge,50-59,524,66,12.6
+Tranche d'âge,<30,422,48,11.4
+Tranche d'âge,30-39,1243,131,10.5
+Tranche d'âge,40-49,738,61,8.3

@@ -1,0 +1,12 @@
+variable,information_value,force
+Compte courant,0.661,très forte
+Historique de crédit,0.292,moyenne
+Épargne,0.189,moyenne
+Durée,0.182,moyenne
+Objet du crédit,0.165,moyenne
+Biens,0.112,moyenne
+Montant,0.097,faible
+Âge,0.088,faible
+Ancienneté emploi,0.086,faible
+Logement,0.084,faible
+Autres crédits,0.059,faible

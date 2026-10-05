@@ -1,0 +1,5 @@
+taux_effort,prets,defauts,taux_defaut_pct,solde_moyen_avant,mois_decouvert_avant
+1-effort < 10 %,191,10,5.2,48332.0,0.02
+2-effort 10-20 %,329,27,8.2,39720.0,0.02
+3-effort 20-35 %,80,17,21.3,34084.0,0.11
+4-effort 35 % et plus,82,22,26.8,25508.0,0.16

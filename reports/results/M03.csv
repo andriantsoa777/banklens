@@ -1,0 +1,4 @@
+contexte_taux,contacts,souscriptions,taux_conversion_pct,euribor_moyen
+1-euribor <1 %,292,124,42.5,0.8
+2-euribor 1-3 %,699,97,13.9,1.31
+3-euribor 3 %+,2008,110,5.5,4.81

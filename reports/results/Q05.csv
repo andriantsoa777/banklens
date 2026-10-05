@@ -1,0 +1,8 @@
+canal,sens,operations,part_operations_pct,montant_m,part_montant_pct,montant_moyen
+Espèces (guichet),credit,156743,14.8,2418.5,38.6,15430.0
+Espèces (guichet),debit,277509,26.3,2336.8,37.3,8421.0
+Virement,credit,65226,6.2,781.5,12.5,11981.0
+Virement,debit,208283,19.7,672.6,10.7,3229.0
+Interne (frais & intérêts),credit,183114,17.3,27.5,0.4,150.0
+Carte,debit,8036,0.8,18.2,0.3,2261.0
+Interne (frais & intérêts),debit,157409,14.9,2.7,0.0,17.0

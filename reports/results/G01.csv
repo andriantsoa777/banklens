@@ -1,0 +1,31 @@
+variable,modalite,dossiers,defauts,taux_defaut_pct
+Compte courant,< 0 DM,274,135,49.3
+Compte courant,1 - 200 DM,269,105,39.0
+Compte courant,> 200 DM,63,14,22.2
+Compte courant,unknown,394,46,11.7
+Durée,37+ mois,87,45,51.7
+Durée,25-36 mois,143,57,39.9
+Durée,13-24 mois,411,122,29.7
+Durée,<=12 mois,359,76,21.2
+Historique de crédit,fully repaid,40,25,62.5
+Historique de crédit,fully repaid this bank,49,28,57.1
+Historique de crédit,repaid,530,169,31.9
+Historique de crédit,delayed,88,28,31.8
+Historique de crédit,critical,293,50,17.1
+Logement,for free,108,44,40.7
+Logement,rent,179,70,39.1
+Logement,own,713,186,26.1
+Montant (DM),6000+,149,68,45.6
+Montant (DM),<1500,306,88,28.8
+Montant (DM),3000-5999,231,66,28.6
+Montant (DM),1500-2999,314,78,24.8
+Âge,<25,149,61,40.9
+Âge,25-34,399,131,32.8
+Âge,55+,79,22,27.8
+Âge,35-44,251,58,23.1
+Âge,45-54,122,28,23.0
+Épargne,< 100 DM,603,217,36.0
+Épargne,101 - 500 DM,103,34,33.0
+Épargne,501 - 1000 DM,63,11,17.5
+Épargne,unknown,183,32,17.5
+Épargne,> 1000 DM,48,6,12.5

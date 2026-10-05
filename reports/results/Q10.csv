@@ -1,0 +1,18 @@
+dimension,modalite,prets,defauts,taux_defaut_pct
+Chômage du district,chômage faible (<3 %),298,29,9.7
+Chômage du district,chômage moyen (3-5 %),230,28,12.2
+Chômage du district,chômage élevé (5 %+),154,19,12.3
+Durée,12 mois,131,11,8.4
+Durée,24 mois,138,17,12.3
+Durée,36 mois,130,15,11.5
+Durée,48 mois,138,16,11.6
+Durée,60 mois,145,17,11.7
+Montant,100-200k,192,18,9.4
+Montant,200k+,185,35,18.9
+Montant,50-100k,179,18,10.1
+Montant,<50k,126,5,4.0
+Âge,25-34,167,16,9.6
+Âge,35-44,150,15,10.0
+Âge,45-54,160,19,11.9
+Âge,55-64,111,13,11.7
+Âge,<25,94,13,13.8

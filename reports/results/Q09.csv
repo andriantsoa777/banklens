@@ -1,0 +1,5 @@
+statut,libelle,prets,part_prets_pct,montant_m,part_montant_pct,montant_moyen,duree_moyenne_mois
+A,finished_ok,203,29.8,18.6,18.0,91641.0,22.2
+B,finished_not_paid,31,4.5,4.4,4.2,140721.0,25.5
+C,running_ok,403,59.1,69.1,66.9,171410.0,43.4
+D,running_in_debt,45,6.6,11.2,10.9,249285.0,46.1

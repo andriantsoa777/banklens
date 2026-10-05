@@ -1,0 +1,149 @@
+10:08:25 | INFO    | ==================== MANIFEST ====================
+10:08:25 | INFO    | étape manifest terminée en 0.3 s
+10:08:25 | INFO    | ==================== BRONZE ====================
+10:08:25 | INFO    | bronze  bronze_berka_account             4 500 lignes
+10:08:25 | INFO    | bronze  bronze_berka_client              5 369 lignes
+10:08:25 | INFO    | bronze  bronze_berka_disp                5 369 lignes
+10:08:25 | INFO    | bronze  bronze_berka_district               77 lignes
+10:08:25 | INFO    | bronze  bronze_berka_loan                  682 lignes
+10:08:25 | INFO    | bronze  bronze_berka_order               6 471 lignes
+10:08:25 | INFO    | bronze  bronze_berka_card                  892 lignes
+10:08:33 | INFO    | bronze  bronze_berka_trans           1 056 320 lignes
+10:08:39 | INFO    | bronze  bronze_fraud_card_tx           284 807 lignes
+10:08:39 | INFO    | bronze  bronze_german_credit             1 000 lignes
+10:08:39 | INFO    | bronze  bronze_marketing_contact         2 999 lignes
+10:08:39 | INFO    | étape bronze terminée en 13.9 s
+10:08:39 | INFO    | ==================== SILVER ====================
+10:08:39 | INFO    | fix     berka      district             D01    valeur '?' -> NULL (aucune imputation : on ne devine pas un taux de chômage) (2)
+10:08:39 | INFO    | fix     berka      account              A01    date yymmdd (ex. 930101) -> ISO 1993-01-01 (4 500)
+10:08:39 | INFO    | fix     berka      account              A02    fréquence de relevé tchèque -> monthly / weekly / after_transaction (4 500)
+10:08:39 | INFO    | fix     berka      client               C01    birth_number AAMMJJ décodé : mois > 50 => femme, mois-50 => vrai mois (5 369)
+10:08:39 | INFO    | fix     berka      card                 CA01   '931107 00:00:00' -> date ISO (l'heure est toujours 00:00:00, supprimée) (892)
+10:08:39 | INFO    | fix     berka      loan                 L01    statut A/B/C/D -> libellé + indicateur is_default (B ou D) (682)
+10:08:39 | INFO    | fix     berka      order                O01    k_symbol vide ou ' ' -> 'unspecified' (1 379)
+10:08:45 | INFO    | fix     berka      trans                T01    type 'VYBER' (retrait) rangé dans 'VYDAJ' : le champ type ne doit avoir que 2 sens (credit/debit) (16 666)
+10:08:46 | INFO    | fix     berka      trans                T02    k_symbol '' ou ' ' (deux façons d'écrire 'vide') -> 'none' (535 314)
+10:08:46 | INFO    | fix     berka      trans                T03    operation vide : toujours des intérêts crédités (k_symbol=UROK) -> 'interest_credit' (183 114)
+10:08:47 | INFO    | fix     berka      trans                T04    bank/account vides -> NULL (renseignés uniquement pour les virements) (782 812)
+10:08:47 | INFO    | fix     berka      trans                T05    montant = 0 conservé mais marqué is_zero_amount (intérêts nuls réels) (14)
+10:08:47 | INFO    | fix     berka      trans                T06    solde négatif conservé mais marqué is_negative_balance (découvert réel) (2 999)
+10:08:47 | INFO    | fix     berka      trans                T07    date yymmdd -> ISO (1 056 320)
+10:08:50 | INFO    | fix     berka      trans                T08    ordre réel des opérations reconstitué par chaînage des soldes (trans_id n'est pas chronologique) (1 056 320)
+10:08:50 | INFO    | fix     berka      trans                T09    ruptures de chaîne résiduelles (opération manquante à la source) : marquées balance_chain_ok=0 (28)
+10:09:05 | WARNING | QUARANT fraud      card_tx              F_DUP  ligne identique à une ligne précédente (31 colonnes) (1081)
+10:09:05 | INFO    | fix     fraud      card_tx              F01    doublons exacts mis en quarantaine (dont 19 fraudes) (1 081)
+10:09:06 | INFO    | fix     fraud      card_tx              F02    Time (secondes depuis la 1re transaction) -> day_index + hour_of_day (283 726)
+10:09:06 | INFO    | fix     fraud      card_tx              F03    montant = 0 conservé mais marqué (vérifications de carte) (1 808)
+10:09:08 | INFO    | fix     german     credit               G01    faute de frappe source 'mangement self-employed' corrigée (148)
+10:09:08 | INFO    | fix     german     credit               G02    cible 'default' 1/2 (1=bon, 2=mauvais, codage UCI) -> is_default 0/1 (1 000)
+10:09:08 | INFO    | fix     german     credit               G03    'unknown' conservé comme modalité (l'absence d'information est elle-même informative en scoring) (394)
+10:09:08 | INFO    | fix     marketing  contact              M01    'unknown' -> NULL sur job/marital/education/default/housing/loan (929)
+10:09:08 | INFO    | fix     marketing  contact              M02    pdays = 999 (code « pas de contact lors d'une campagne précédente ») -> NULL : sinon la moyenne de pdays n'a aucun sens (2 888)
+10:09:08 | INFO    | fix     marketing  contact              M03    mois texte (may) -> numéro (5) (2 999)
+10:09:08 | INFO    | fix     marketing  contact              M04    'duration' conservée (analyse) mais marquée call_duration_s : inconnue avant l'appel, donc interdite comme variable prédictive (fuite) (2 999)
+10:09:08 | INFO    | silver  silver_account                   4 500 lignes
+10:09:08 | INFO    | silver  silver_card                        892 lignes
+10:09:08 | INFO    | silver  silver_card_tx                 283 726 lignes
+10:09:08 | INFO    | silver  silver_client                    5 369 lignes
+10:09:08 | INFO    | silver  silver_credit_application        1 000 lignes
+10:09:08 | INFO    | silver  silver_disposition               5 369 lignes
+10:09:08 | INFO    | silver  silver_district                     77 lignes
+10:09:08 | INFO    | silver  silver_loan                        682 lignes
+10:09:08 | INFO    | silver  silver_marketing_contact         2 999 lignes
+10:09:08 | INFO    | silver  silver_standing_order            6 471 lignes
+10:09:08 | INFO    | silver  silver_transaction           1 056 320 lignes
+10:09:08 | INFO    | quarantaine : 1081 ligne(s)
+10:09:08 | INFO    | étape silver terminée en 28.4 s
+10:09:08 | INFO    | ==================== DQ ====================
+10:09:08 | INFO    | dq      C01  block bronze = silver + quarantaine (transactions) -> PASS (0/1056320)
+10:09:08 | INFO    | dq      C02  block bronze = silver + quarantaine (comptes) -> PASS (0/4500)
+10:09:08 | INFO    | dq      C03  block bronze = silver + quarantaine (prêts) -> PASS (0/682)
+10:09:08 | INFO    | dq      C04  block bronze = silver + quarantaine (transactions carte) -> PASS (0/284807)
+10:09:08 | INFO    | dq      C05  warni chaque compte a au moins une transaction -> PASS (0/4500)
+10:09:08 | WARNING | dq      C06  warni indicateurs socio-économiques de district renseignés (chômage 1995, cr -> WARN (1/77)
+10:09:08 | INFO    | dq      U01  block trans_id unique -> PASS (0/1056320)
+10:09:10 | INFO    | dq      U02  block (account_id, tx_seq) unique : l'ordre des opérations est total -> PASS (0/1056320)
+10:09:10 | INFO    | dq      U03  warni au plus un prêt par compte -> PASS (0/682)
+10:09:10 | INFO    | dq      U04  block un seul titulaire (OWNER) par compte -> PASS (0/4500)
+10:09:11 | INFO    | dq      U05  block aucune ligne carte en double après déduplication -> PASS (0/283726)
+10:09:11 | INFO    | dq      I01  block transaction.account_id existe dans account -> PASS (0/1056320)
+10:09:11 | INFO    | dq      I02  block loan.account_id existe dans account -> PASS (0/682)
+10:09:11 | INFO    | dq      I03  block account.district_id existe dans district -> PASS (0/4500)
+10:09:11 | INFO    | dq      I04  block disposition -> client et compte existent -> PASS (0/5369)
+10:09:11 | INFO    | dq      I05  block card.disp_id existe dans disposition -> PASS (0/892)
+10:09:11 | INFO    | dq      I06  block standing_order.account_id existe dans account -> PASS (0/6471)
+10:09:11 | INFO    | dq      V01  block dates de transaction comprises entre 1993-01-01 et 1998-12-31 -> PASS (0/1056320)
+10:09:11 | INFO    | dq      V02  block âge à la date de référence entre 0 et 110 ans -> PASS (0/5369)
+10:09:11 | INFO    | dq      V03  block signe cohérent : crédit => montant signé >= 0, débit => <= 0 -> PASS (0/1056320)
+10:09:11 | INFO    | dq      V04  warni contrepartie (banque/compte) uniquement sur les virements -> PASS (0/1056320)
+10:09:11 | INFO    | dq      V05  warni montant carte <= 30 000 (un montant supérieur serait suspect de saisie -> PASS (0/283726)
+10:09:11 | INFO    | dq      V06  block âge d'un contact entre 18 et 100 ans -> PASS (0/2999)
+10:09:11 | INFO    | dq      K01  warni mensualité x durée = montant du prêt (tolérance 1 %) : le prêt est amo -> PASS (0/682)
+10:09:11 | INFO    | dq      K02  warni aucune transaction antérieure à l'ouverture du compte -> PASS (0/1056320)
+10:09:11 | INFO    | dq      K03  warni prêt accordé après l'ouverture du compte -> PASS (0/682)
+10:09:11 | INFO    | dq      K04  warni carte émise après l'ouverture du compte -> PASS (0/892)
+10:09:11 | WARNING | dq      K07  warni chaque ordre permanent de remboursement correspond à un prêt du fichie -> WARN (35/717)
+10:09:11 | INFO    | dq      K05  warni âge >= 18 et durée de crédit entre 1 et 72 mois -> PASS (0/1000)
+10:09:11 | WARNING | dq      K06  warni previous_contacts > 0 => délai depuis la campagne précédente renseigné -> WARN (321/432)
+10:09:12 | WARNING | dq      B01  warni solde_précédent + montant = solde_après (±0,15 CZK) sur la chaîne reco -> WARN (28/1056320)
+10:09:12 | INFO    | dq      B02  warni somme des montants signés = solde final par compte (tolérance : 0,10 C -> PASS (0/4500)
+10:09:12 | INFO    | étape dq terminée en 4.3 s
+10:09:12 | INFO    | ==================== GOLD ====================
+10:09:22 | INFO    | gold    01_dimensions.sql
+10:09:22 | INFO    | gold    02_facts_bank.sql
+10:09:22 | INFO    | gold    03_facts_other.sql
+10:09:22 | INFO    | gold    dim_account                    4 500 lignes
+10:09:22 | INFO    | gold    dim_client                     5 369 lignes
+10:09:22 | INFO    | gold    dim_district                      77 lignes
+10:09:22 | INFO    | gold    fact_transaction           1 056 320 lignes
+10:09:22 | INFO    | gold    fact_account_month           185 615 lignes
+10:09:22 | INFO    | gold    fact_loan                        682 lignes
+10:09:22 | INFO    | gold    fact_card_tx                 283 726 lignes
+10:09:22 | INFO    | gold    fact_credit_application        1 000 lignes
+10:09:22 | INFO    | gold    fact_marketing_contact         2 999 lignes
+10:09:22 | INFO    | étape gold terminée en 9.5 s
+10:09:22 | INFO    | ==================== ML ====================
+10:10:22 | INFO    | ml      prêts Berka : AUC=0.767 [0.694 ; 0.839] (baseline montant seul 0.624)
+10:10:34 | INFO    | ml      fraude : train=212795 (380 fraudes) test=70931 (93 fraudes)
+10:10:35 | INFO    | ml      fraude Régression logistique  PR-AUC=0.744 ROC-AUC=0.980
+10:10:53 | INFO    | ml      fraude Gradient boosting      PR-AUC=0.767 ROC-AUC=0.978
+10:10:54 | INFO    | ml      crédit allemand : AUC=0.785 Gini=0.570
+10:11:01 | INFO    | ml      marketing : AUC=0.754 (avec fuite 0.932)
+10:11:01 | INFO    | étape ml terminée en 99.9 s
+10:11:01 | INFO    | ==================== ANALYSIS ====================
+10:11:02 | INFO    | analyse F01  fraude         2 ligne(s) -> Fraude carte : l'ampleur du problème
+10:11:02 | INFO    | analyse F02  fraude        24 ligne(s) -> Fraude et heure de la journée
+10:11:02 | INFO    | analyse F03  fraude         8 ligne(s) -> Montants : les fraudeurs testent-ils les cartes avec de petits achats ?
+10:11:05 | INFO    | analyse F04  fraude        10 ligne(s) -> Quelles variables séparent le mieux fraude et légitime ?
+10:11:05 | INFO    | analyse G01  credit        30 ligne(s) -> Scoring de crédit : qui fait défaut ?
+10:11:05 | INFO    | analyse G02  credit        11 ligne(s) -> Information Value : quelles variables pèsent le plus dans un scorecard ?
+10:11:05 | INFO    | analyse M01  marketing     22 ligne(s) -> Campagnes de dépôt à terme : qui accepte ?
+10:11:05 | INFO    | analyse M02  marketing      4 ligne(s) -> Insister paie-t-il ?
+10:11:05 | INFO    | analyse M03  marketing      3 ligne(s) -> Le contexte de taux change tout
+10:11:05 | INFO    | analyse M04  marketing      4 ligne(s) -> La durée de l'appel : un faux ami prédictif
+10:11:05 | INFO    | analyse Q01  banque         9 ligne(s) -> Les chiffres clés de la banque
+10:11:06 | INFO    | analyse Q02  banque        72 ligne(s) -> Évolution mensuelle de l'activité et des dépôts
+10:11:06 | INFO    | analyse Q03  banque         6 ligne(s) -> Qui sont les titulaires de compte ?
+10:11:06 | INFO    | analyse Q04  banque         8 ligne(s) -> Géographie des comptes et des soldes
+10:11:07 | INFO    | analyse Q05  banque         7 ligne(s) -> Comment les clients utilisent leur compte
+10:11:07 | INFO    | analyse Q06  banque         3 ligne(s) -> Comptes dormants et attrition silencieuse
+10:11:07 | INFO    | analyse Q07  banque         4 ligne(s) -> Découverts : combien, qui, et à quel point
+10:11:07 | INFO    | analyse Q08  banque         4 ligne(s) -> Cartes : pénétration et effet sur les usages
+10:11:07 | INFO    | analyse Q09  banque         4 ligne(s) -> Le portefeuille de prêts et son taux de défaut
+10:11:07 | INFO    | analyse Q10  banque        17 ligne(s) -> Quels prêts font défaut ?
+10:11:07 | INFO    | analyse Q11  banque         6 ligne(s) -> Défaut par année d'octroi (analyse de vintage) et biais de censure
+10:11:07 | INFO    | analyse Q12  banque         4 ligne(s) -> Signaux d'alerte AVANT l'octroi
+10:11:09 | INFO    | analyse Q13  banque         6 ligne(s) -> Revenus et coûts observables dans les données
+10:11:09 | INFO    | analyse Q14  banque         3 ligne(s) -> Concentration des dépôts
+10:11:09 | INFO    | analyse Q15  banque         5 ligne(s) -> Cohortes d'ouverture de compte
+10:11:10 | INFO    | analyse Q16  banque        12 ligne(s) -> Saisonnalité : le pic de janvier
+10:11:10 | INFO    | analyse Q17  banque         5 ligne(s) -> Segmentation comportementale des comptes
+10:11:10 | INFO    | analyse Q18  banque         5 ligne(s) -> Ordres permanents et équipement des comptes
+10:11:10 | INFO    | étape analysis terminée en 9.0 s
+10:11:10 | INFO    | ==================== DASHBOARD ====================
+10:11:14 | INFO    | dashboard /Users/nirinaandriantsoa/Downloads/banklens/dashboard/index.html (132 Ko)
+10:11:14 | INFO    | étape dashboard terminée en 3.7 s
+10:11:14 | INFO    | ==================== DOCS ====================
+10:11:14 | INFO    | docs    architecture.html, DATA_DICTIONARY.md, INTERVIEW_GUIDE.md
+10:11:14 | INFO    | étape docs terminée en 0.2 s
+10:11:14 | INFO    | pipeline terminé en 169.4 s -> /Users/nirinaandriantsoa/Downloads/banklens/warehouse/banklens.db
